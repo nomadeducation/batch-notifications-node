@@ -2,11 +2,9 @@
   "name": "batch-notifications-node",
   "version": "0.0.1",
   "description": "Node API Client for Batch.com notifications service",
-  "main": "app.js",
+  "main": "./lib/client.js",
   "scripts": {
-    "lint": "eslint --quiet --cache --format codeframe .",
-    "start": "node app.js",
-    "test": "npm test"
+    "lint": "eslint --quiet --cache --format codeframe ."
   },
   "repository": {
     "type": "git",
@@ -25,5 +23,6 @@
   "bugs": {
     "url": "https://github.com/nomadeducation/batch-notifications-node/issues"
   },
+  "homepage": "https://github.com/nomadeducation/batch-notifications-node#readme",
   "homepage": "https://github.com/nomadeducation/batch-notifications-node#readme"
 }
