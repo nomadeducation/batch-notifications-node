@@ -24,5 +24,11 @@
     "url": "https://github.com/nomadeducation/batch-notifications-node/issues"
   },
   "homepage": "https://github.com/nomadeducation/batch-notifications-node#readme",
-  "homepage": "https://github.com/nomadeducation/batch-notifications-node#readme"
+  "dependencies": {
+    "lodash": "^4.17.4",
+    "request": "^2.81.0"
+  },
+  "devDependencies": {
+    "eslint": "^3.19.0"
+  }
 }
