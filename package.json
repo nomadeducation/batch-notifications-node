@@ -17,7 +17,8 @@
     "wrapper"
   ],
   "author": "Nomad Education",
-  "license": "Private",
+  "license": "UNLICENSED",
+  "private": true,
   "bugs": {
     "url": "https://github.com/nomadeducation/batch-notifications-node/issues"
   },
