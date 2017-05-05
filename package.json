@@ -2,7 +2,7 @@
   "name": "batch-notifications-node",
   "version": "0.0.1",
   "description": "Node API Client for Batch.com notifications service",
-  "main": "./lib/client.js",
+  "main": "./index.js",
   "scripts": {
     "lint": "eslint --quiet --cache --format codeframe ."
   },
