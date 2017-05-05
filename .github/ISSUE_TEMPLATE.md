@@ -1,6 +1,3 @@
-<!-- We mainly use [Trello](https://trello.com/nomadeducation) for feature requests & bugs reporting.
-However, GitHub Issues is still relevant for small issues like, for example, internal refactoring (typo, wording, code formatting, etc). -->
-
 ### Description
 _Explain what you did, what you expected to happen, and what actually happens._
 
