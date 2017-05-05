@@ -6,6 +6,9 @@
   "scripts": {
     "lint": "eslint --quiet --cache --format codeframe ."
   },
+  "engines": {
+    "node": ">=6.x"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/nomadeducation/batch-notifications-node.git"
