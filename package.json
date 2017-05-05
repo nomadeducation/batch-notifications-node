@@ -24,10 +24,14 @@
   },
   "homepage": "https://github.com/nomadeducation/batch-notifications-node#readme",
   "dependencies": {
-    "lodash": "^4.17.4",
-    "request": "^2.81.0"
+    "ajv": "^5.0.1",
+    "axios": "^0.16.1",
+    "bunyan": "^1.8.10"
   },
   "devDependencies": {
-    "eslint": "^3.19.0"
+    "chai": "^3.5.0",
+    "eslint": "^3.19.0",
+    "mocha": "^3.3.0",
+    "nock": "^9.0.13"
   }
 }
