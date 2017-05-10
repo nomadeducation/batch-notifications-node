@@ -2,10 +2,15 @@
 # see https://help.github.com/articles/ignoring-files/#create-a-global-gitignore
 
 # packages & node related files
-node_modules
+node_modules/
 *.seed
 *.log
 *.out
 *.pid
 npm-debug.log
+
+# linter
 .eslintcache
+
+# code coverage
+coverage/

@@ -1,0 +1,25 @@
+# see https://docs.travis-ci.com/user/languages/javascript-with-nodejs/
+language: node_js
+node_js:
+  - "6"
+# the toolchain is required in order to build native npm module
+addons:
+  apt:
+    sources:
+      - ubuntu-toolchain-r-test
+    packages:
+      - g++-4.8
+cache:
+  directories:
+    - node_modules
+branches:
+  only:
+    - master
+matrix:
+  fast_finish: true
+env:
+  global:
+    - CXX=g++-4.8
+script:
+  - npm run lint --silent
+  - npm test

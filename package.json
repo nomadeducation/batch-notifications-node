@@ -1,10 +1,14 @@
 {
-  "name": "batch-notifications-node",
-  "version": "0.0.1",
+  "name": "batch-notifications",
+  "version": "0.1.0",
   "description": "Node API Client for Batch.com notifications service",
-  "main": "./lib/client.js",
+  "main": "./index.js",
   "scripts": {
-    "lint": "eslint --quiet --cache --format codeframe ."
+    "lint": "eslint --quiet --cache --format codeframe .",
+    "test": "NODE_ENV=test mocha"
+  },
+  "engines": {
+    "node": ">=6.x"
   },
   "repository": {
     "type": "git",
@@ -26,11 +30,13 @@
   "dependencies": {
     "ajv": "^5.0.1",
     "axios": "^0.16.1",
-    "bunyan": "^1.8.10"
+    "bunyan": "^1.8.10",
+    "lodash": "^4.17.4"
   },
   "devDependencies": {
     "chai": "^3.5.0",
     "eslint": "^3.19.0",
+    "istanbul": "^0.4.5",
     "mocha": "^3.3.0",
     "nock": "^9.0.13"
   }
