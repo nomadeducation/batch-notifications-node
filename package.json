@@ -1,6 +1,6 @@
 {
   "name": "batch-notifications",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Node API Client for Batch.com notifications service",
   "main": "./index.js",
   "scripts": {
