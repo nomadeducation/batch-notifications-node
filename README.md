@@ -1,4 +1,4 @@
-# Batch.com SDK for Node [![Build Status](https://travis-ci.com/nomadeducation/batch-notifications-node.svg?token=q2CErnyNpiDUJ8qhqaNZ&branch=master)](https://travis-ci.com/nomadeducation/batch-notifications-node)
+# Batch.com SDK for Node [![Build Status](https://travis-ci.org/nomadeducation/batch-notifications-node.svg?branch=master)](https://travis-ci.org/nomadeducation/batch-notifications-node) [![Coverage Status](https://coveralls.io/repos/github/nomadeducation/batch-notifications-node/badge.svg?branch=master)](https://coveralls.io/github/nomadeducation/batch-notifications-node?branch=master)
 This project is a NodeJS client wrapper for the [Batch.com](https://batch.com/) notifications server API.
 
 ## Prerequisites
