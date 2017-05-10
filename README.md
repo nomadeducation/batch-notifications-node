@@ -6,7 +6,7 @@ Every methods in this library in _Promise-based_ using the native object. Moreov
 
 ## Installation
 ``` sh
-$ npm install --save batch-notifications-node
+$ npm install --save batch-notifications
 ```
 
 ## Usage
