@@ -1,4 +1,4 @@
-# Batch Node API Client
+# Batch Node API Client [![Build Status](https://travis-ci.com/nomadeducation/batch-notifications-node.svg?token=q2CErnyNpiDUJ8qhqaNZ&branch=master)](https://travis-ci.com/nomadeducation/batch-notifications-node)
 NodeJS client wrapper for the [Batch.com](https://batch.com/) notifications API.
 
 ## Prerequisites
