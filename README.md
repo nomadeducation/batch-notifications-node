@@ -61,7 +61,8 @@ const payload = {
     push_time: "2038-01-19T03:14:07"
 };
 
-batch.campaign.update(payload)
+// token was taken from the previous `create` method
+batch.campaign.update(token, payload)
 .then(function () {
     // campaign updated
 });
