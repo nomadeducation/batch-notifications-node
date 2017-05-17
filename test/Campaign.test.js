@@ -1,7 +1,6 @@
 const expect = require("chai").expect;
 const nock = require("nock");
 const Config = require("../lib/utils/Config");
-const Request = require("../lib/utils/Request");
 const Campaign = require("../lib/Campaign");
 const fixture = require("./fixtures/campaign");
 const options = require("./fixtures/options");
@@ -12,10 +11,12 @@ describe("Campaign", function () {
     let createdCampaignToken;
 
     before(function () {
-        const request = Request.init(options);
-        campaign = Campaign(request);
+        const cfg = new Config();
+        cfg.setUserOptions(options);
 
-        batchURL = `${Config.get("api.baseURL")}/${Config.get("api.version")}/${Config.get("api.devKey")}`;
+        campaign = new Campaign(cfg);
+
+        batchURL = `${cfg.get("api.baseURL")}/${cfg.get("api.version")}/${cfg.get("api.devKey")}`;
     });
 
     it("should create a campaign", function (done) {
