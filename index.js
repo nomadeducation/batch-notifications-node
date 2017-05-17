@@ -1,4 +1,4 @@
-const Request = require("./lib/utils/Request");
+const Config = require("./lib/utils/Config");
 const Campaign = require("./lib/Campaign");
 
 /**
@@ -8,9 +8,10 @@ const Campaign = require("./lib/Campaign");
  * }}
  */
 module.exports = function BatchClient (opts) {
-    const req = Request.init(opts);
+    const cfg = new Config();
+    cfg.setUserOptions(opts);
 
     return {
-        campaign: Campaign(req)
+        campaign: new Campaign(cfg)
     };
 };
