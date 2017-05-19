@@ -34,7 +34,7 @@ describe("Campaign", function () {
             createdCampaignToken = result;
             done();
         })
-        .catch(() => done());
+        .catch((err) => done(err));
     });
 
     it("should update an existing campaign", function (done) {
@@ -47,6 +47,6 @@ describe("Campaign", function () {
 
         campaign.update(createdCampaignToken, payload)
         .then(() => done())
-        .catch(() => done());
+        .catch((err) => done(err));
     });
 });
