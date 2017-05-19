@@ -67,3 +67,27 @@ batch.campaign.update(token, payload)
     // campaign updated
 });
 ```
+
+#### Stats
+Fetching stats is quite [easy](https://batch.com/doc/api/campaigns/get.html) but don't forget that stats can **only** be fetched if the campaign token was created using the **live** key and that the campaign is already **launched**:
+```js
+// see `opts` structure above
+const batch = require("batch-notifications")(opts);
+
+// token was taken from the previous `create` method
+batch.campaign.stats(token)
+.then(function (detail) {
+    // ...
+});
+```
+
+The `detail` object will contain the following properties:
+- `date`: Date
+- `sent`: Number
+- `direct_open`: Number
+- `influenced_open`: Number
+- `open_rate`: Number
+- `reengaged`: Number
+- `errors`: Number
+
+See the [docs](https://batch.com/doc/dashboard/push/analytics.html) for more infos about those variables.
