@@ -49,4 +49,21 @@ describe("Campaign", function () {
         .then(() => done())
         .catch((err) => done(err));
     });
+
+    it("should fetch stats from an existing campaign", function (done) {
+        const replyStats = fixture.createMinimal.replyStats;
+        const expectedStats = fixture.createMinimal.stats;
+        const status = fixture.createMinimal.statusCode;
+
+        nock(batchURL)
+        .get(`/campaigns/stats/${createdCampaignToken}`)
+        .reply(status, replyStats);
+
+        campaign.stats(createdCampaignToken)
+        .then(function (detail) {
+            expect(detail).to.be.deep.equal(expectedStats);
+            done();
+        })
+        .catch((err) => done(err));
+    });
 });
