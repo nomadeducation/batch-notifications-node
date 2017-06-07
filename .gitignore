@@ -1,13 +1,21 @@
-# Only add ignored files specific to the project
-# see https://help.github.com/articles/ignoring-files/#create-a-global-gitignore
+# Since npm/yarn ignore the "global-gitignore" file, we'll have to explicitely ignore our dev. related files
+# IDE
+.idea/
+.vscode/
+*.sublime-workspace
 
-# packages & node related files
+# OS
+**/.DS_Store
+
+# packages & node
 node_modules/
 *.seed
 *.log
 *.out
 *.pid
 npm-debug.log
+yarn-debug.log
+yarn-error.log
 
 # linter
 .eslintcache
