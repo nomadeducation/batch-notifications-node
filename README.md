@@ -68,6 +68,18 @@ batch.campaign.update(token, payload)
 });
 ```
 
+#### Remove
+Removing a campaign is done like this:
+```js
+const batch = require("batch-notifications")(opts);
+
+// token was taken from the previous `create` method
+batch.campaign.remove(token)
+.then(function () {
+    // campaign removed
+});
+```
+
 #### Stats
 Fetching stats is quite [easy](https://batch.com/doc/api/campaigns/get.html) but don't forget that stats can **only** be fetched if the campaign token was created using the **live** key and that the campaign is already **launched**:
 ```js
