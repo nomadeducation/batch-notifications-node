@@ -50,6 +50,18 @@ describe("Campaign", function () {
         .catch((err) => done(err));
     });
 
+    it("should remove an existing campaign", function (done) {
+        const status = fixture.createMinimal.statusCode;
+
+        nock(batchURL)
+        .post(`/campaigns/delete/${createdCampaignToken}`)
+        .reply(status);
+
+        campaign.remove(createdCampaignToken)
+        .then(() => done())
+        .catch((err) => done(err));
+    });
+
     it("should fetch stats from an existing campaign", function (done) {
         const replyStats = fixture.createMinimal.replyStats;
         const expectedStats = fixture.createMinimal.stats;
