@@ -4,6 +4,6 @@ module.exports = {
         version: "1.1"
     },
     axios: {
-        timeout: 5000
+        timeout: 30000
     }
 };
