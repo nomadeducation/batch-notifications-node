@@ -192,6 +192,46 @@ describe("Campaign", function () {
         .catch(err => done(err));
     });
 
+    it("should force-enable an existing campaign", function (done) {
+        const reply = fixture.get.reply;
+        const status = fixture.createMinimal.statusCode;
+
+        nock(batchURL)
+        .post(`/campaigns/update/${createdCampaignToken}`, {live: true})
+        .reply(status);
+
+        nock(batchURL)
+        .get(`/campaigns/${createdCampaignToken}`)
+        .reply(status, reply);
+
+        campaign.enable(createdCampaignToken)
+        .then(() => campaign.get(createdCampaignToken))
+        .then(function (result) {
+            expect(result).to.deep.equal(reply);
+            done();
+        })
+        .catch(err => done(err));
+    });
+
+    it("should force-disable an existing campaign", function (done) {
+        const reply = fixture.get.reply;
+        const status = fixture.createMinimal.statusCode;
+
+        nock(batchURL)
+        .post(`/campaigns/update/${createdCampaignToken}`, {live: false})
+        .reply(status);
+
+        nock(batchURL)
+        .get(`/campaigns/${createdCampaignToken}`)
+        .reply(status, reply);
+
+        campaign.disable(createdCampaignToken)
+        .then(() => campaign.get(createdCampaignToken))
+        .then(function (result) {
+            expect(result).to.deep.equal(reply);
+            done();
+        })
+        .catch(err => done(err));
     });
 
     it("should fetch stats from an existing campaign", function (done) {
