@@ -5,18 +5,32 @@ const Campaign = require("../lib/Campaign");
 const fixture = require("./fixtures/campaign");
 const options = require("./fixtures/options");
 
+/**
+ * @returns {Campaign}
+ */
+function createCampaignHandler () {
+    const cfg = new Config();
+    cfg.setUserOptions(options);
+    return new Campaign(cfg);
+}
+
+/**
+ * @returns {String}
+ */
+function getURL () {
+    const cfg = new Config();
+    cfg.setUserOptions(options);
+    return `${cfg.get("api.baseURL")}/${cfg.get("api.version")}/${cfg.get("api.devKey")}`;
+}
+
 describe("Campaign", function () {
     let campaign;
     let batchURL = "";
     let createdCampaignToken;
 
     before(function () {
-        const cfg = new Config();
-        cfg.setUserOptions(options);
-
-        campaign = new Campaign(cfg);
-
-        batchURL = `${cfg.get("api.baseURL")}/${cfg.get("api.version")}/${cfg.get("api.devKey")}`;
+        campaign = createCampaignHandler();
+        batchURL = getURL();
     });
 
     it("should create a campaign", function (done) {
