@@ -23,17 +23,16 @@ function getURL () {
     return `${cfg.get("api.baseURL")}/${cfg.get("api.version")}/${cfg.get("api.devKey")}`;
 }
 
-describe("Campaign", function () {
-    let campaign;
-    let batchURL = "";
-    let createdCampaignToken;
+/*
+ * We've separated the campaign creation & deletion
+ * because those functions will be later used throughout the rest of the tests
+ */
 
-    before(function () {
-        campaign = createCampaignHandler();
-        batchURL = getURL();
-    });
-
+describe("Campaign creation", function () {
     it("should create a campaign", function (done) {
+        const campaign = createCampaignHandler();
+        const batchURL = getURL();
+
         const payload = fixture.createMinimal.payload;
         const token = fixture.createMinimal.token;
         const status = fixture.createMinimal.statusCode;
@@ -45,10 +44,79 @@ describe("Campaign", function () {
         campaign.create(payload)
         .then(function (result) {
             expect(result).to.be.equal(token.campaign_token);
-            createdCampaignToken = result;
             done();
         })
         .catch((err) => done(err));
+    });
+});
+
+describe("Campaign deletion", function () {
+    const campaign = createCampaignHandler();
+    const batchURL = getURL();
+    let createdCampaignToken;
+
+    before(function (done) {
+        const payload = fixture.createMinimal.payload;
+        const token = fixture.createMinimal.token;
+        const status = fixture.createMinimal.statusCode;
+
+        nock(batchURL)
+        .post("/campaigns/create", payload)
+        .reply(status, token);
+
+        campaign.create(payload)
+        .then(function (result) {
+            createdCampaignToken = result;
+            done();
+        })
+        .catch(err => done(err));
+    });
+
+    it("should remove an existing campaign", function (done) {
+        const status = fixture.createMinimal.statusCode;
+
+        nock(batchURL)
+        .post(`/campaigns/delete/${createdCampaignToken}`)
+        .reply(status);
+
+        campaign.remove(createdCampaignToken)
+        .then(() => done())
+        .catch((err) => done(err));
+    });
+});
+
+describe("Campaign", function () {
+    const campaign = createCampaignHandler();
+    const batchURL = getURL();
+    let createdCampaignToken;
+
+    beforeEach(function (done) {
+        const payload = fixture.createMinimal.payload;
+        const token = fixture.createMinimal.token;
+        const status = fixture.createMinimal.statusCode;
+
+        nock(batchURL)
+        .post("/campaigns/create", payload)
+        .reply(status, token);
+
+        campaign.create(payload)
+        .then(function (result) {
+            createdCampaignToken = result;
+            done();
+        })
+        .catch(err => done(err));
+    });
+
+    afterEach(function (done) {
+        const status = fixture.createMinimal.statusCode;
+
+        nock(batchURL)
+        .post(`/campaigns/delete/${createdCampaignToken}`)
+        .reply(status);
+
+        campaign.remove(createdCampaignToken)
+        .then(() => done())
+        .catch(err => done(err));
     });
 
     it("should update an existing campaign", function (done) {
@@ -60,18 +128,6 @@ describe("Campaign", function () {
         .reply(status);
 
         campaign.update(createdCampaignToken, payload)
-        .then(() => done())
-        .catch((err) => done(err));
-    });
-
-    it("should remove an existing campaign", function (done) {
-        const status = fixture.createMinimal.statusCode;
-
-        nock(batchURL)
-        .post(`/campaigns/delete/${createdCampaignToken}`)
-        .reply(status);
-
-        campaign.remove(createdCampaignToken)
         .then(() => done())
         .catch((err) => done(err));
     });
