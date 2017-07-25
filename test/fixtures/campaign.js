@@ -38,3 +38,50 @@ exports.createMinimal = {
     },
     statusCode: 201
 };
+
+exports.get = {
+    token: {
+        "campaign_token": "3396955c1a7fe0005d76973fca00b44a"
+    },
+    reply: {
+        "campaign_token": "3396955c1a7fe0005d76973fca00b44a",
+        "from_api": true,
+        "dev_only": true,
+        "created_date": "2017-03-02T09:43:17",
+        "name": "minimal notification",
+        "live": false,
+        "push_time": "2017-03-02T09:43:17",
+        "gcm_collapse_key": "default",
+        "targeting": {
+            "segments": [
+                "ONE_TIME",
+                "DORMANT",
+                "ENGAGED",
+                "IMPORTED",
+                "NEW"
+            ]
+        },
+        "messages": [
+            {
+                "title": "Salut le monde !",
+                "body": "Comment ça va ?"
+            }
+        ]
+    },
+    statusCode: 200
+};
+
+exports.list = {
+    reply: [
+        {
+            "campaign_token": "3396955c1a7fe0005d76973fca00b44a",
+            "from_api": true,
+            "dev_only": true,
+            "created_date": "2017-03-02T09:43:17",
+            "name": "minimal notification",
+            "live": false,
+            "push_time": "2017-03-02T09:43:17"
+        }
+    ],
+    statusCode: 200
+};
