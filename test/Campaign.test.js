@@ -169,17 +169,29 @@ describe("Campaign", function () {
         })
         .catch(err => done(err));
     });
+
     it("should update an existing campaign", function (done) {
         const payload = fixture.createMinimal.payload;
         const status = fixture.createMinimal.statusCode;
+        const reply = fixture.get.reply;
 
         nock(batchURL)
         .post(`/campaigns/update/${createdCampaignToken}`, payload)
         .reply(status);
 
+        nock(batchURL)
+        .get(`/campaigns/${createdCampaignToken}`)
+        .reply(status, reply);
+
         campaign.update(createdCampaignToken, payload)
-        .then(() => done())
-        .catch((err) => done(err));
+        .then(() => campaign.get(createdCampaignToken))
+        .then(function (result) {
+            expect(result).to.deep.equal(reply);
+            done();
+        })
+        .catch(err => done(err));
+    });
+
     });
 
     it("should fetch stats from an existing campaign", function (done) {
