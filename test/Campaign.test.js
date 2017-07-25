@@ -119,6 +119,56 @@ describe("Campaign", function () {
         .catch(err => done(err));
     });
 
+    it("should get infos from an existing campaign", function (done) {
+        const reply = fixture.get.reply;
+        const status = fixture.get.statusCode;
+
+        nock(batchURL)
+        .get(`/campaigns/${createdCampaignToken}`)
+        .reply(status, reply);
+
+        campaign.get(createdCampaignToken)
+        .then(function (result) {
+            expect(result).to.deep.equal(reply);
+            done();
+        })
+        .catch(err => done(err));
+    });
+
+    it("should list the existing campaigns", function (done) {
+        const reply = fixture.list.reply;
+        const status = fixture.list.statusCode;
+
+        nock(batchURL)
+        .get("/campaigns/list")
+        .query({
+            from: 0,
+            limit: 10
+        })
+        .reply(status, reply);
+
+        campaign.list()
+        .then(function (result) {
+            expect(result).to.deep.equal(reply);
+            done();
+        })
+        .catch(err => done(err));
+    });
+
+    it("should check that the existing campaign exists", function (done) {
+        const status = fixture.get.statusCode;
+
+        nock(batchURL)
+        .get(`/campaigns/${createdCampaignToken}`)
+        .reply(status);
+
+        campaign.has(createdCampaignToken)
+        .then(function (isCreated) {
+            expect(isCreated).to.be.true;
+            done();
+        })
+        .catch(err => done(err));
+    });
     it("should update an existing campaign", function (done) {
         const payload = fixture.createMinimal.payload;
         const status = fixture.createMinimal.statusCode;
