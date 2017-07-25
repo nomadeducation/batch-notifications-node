@@ -18,7 +18,7 @@ exports.createMinimal = {
         "campaign_token": "3396955c1a7fe0005d76973fca00b44a",
         "detail": [
             {
-                "date": "2015-11-20",
+                "date": "2017-03-02T09:43:17",
                 "sent": 754,
                 "direct_open": 102,
                 "influenced_open": 98,
@@ -28,7 +28,7 @@ exports.createMinimal = {
         ]
     },
     stats: {
-        date: new Date("2015-11-20"),
+        date: new Date("2017-03-02T09:43:17"),
         sent: 754,
         direct_open: 102,
         influenced_open: 98,
