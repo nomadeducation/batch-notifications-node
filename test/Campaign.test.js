@@ -234,6 +234,8 @@ describe("Campaign", function () {
         .catch(err => done(err));
     });
 
+    // XXX stats cannot be fetched right after the campaign creation
+    // so this will only work when mocking HTTP requests
     it("should fetch stats from an existing campaign", function (done) {
         const replyStats = fixture.createMinimal.replyStats;
         const expectedStats = fixture.createMinimal.stats;
@@ -248,6 +250,6 @@ describe("Campaign", function () {
             expect(detail).to.be.deep.equal(expectedStats);
             done();
         })
-        .catch((err) => done(err));
+        .catch(err => done(err));
     });
 });
