@@ -20,12 +20,13 @@ Before doing anything, you must pass your API keys created for your app in [batc
 ```js
 const opts = {
     restKey: "YOUR_REST_API_KEY",
+    // you must pass at least one the following API key
     devKey: "YOUR_DEV_API_KEY",
     liveKey: "YOUR_LIVE_API_KEY"
 };
 ```
 
-The client will chose the `liveKey` when `NODE_ENV=production`, otherwise it will take the `devKey`.
+The client will always favor the `liveKey` if present otherwise it will take the `devKey`.
 
 ### Campaigns
 See the [available parameters](https://batch.com/doc/api/campaigns/parameters.html) in the batch documentation.
