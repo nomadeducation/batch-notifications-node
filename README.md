@@ -188,3 +188,16 @@ batch.campaign.disable(token)
     // campaign is disabled
 });
 ```
+
+## Contributing
+First, install the dependencies using `yarn`:
+```sh
+$ yarn install --pure-lockfile
+```
+
+Verify that your project is configured correctly by launching tests:
+```sh
+$ yarn test
+```
+
+Before you start coding make sure that you've read our [`CONTRIBUTING`](.github/CONTRIBUTING.md) guide!
