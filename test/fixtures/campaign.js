@@ -47,10 +47,10 @@ exports.get = {
         "campaign_token": "3396955c1a7fe0005d76973fca00b44a",
         "from_api": true,
         "dev_only": true,
-        "created_date": "2017-03-02T09:43:17",
+        "created_date": new Date("2017-03-02T09:43:17"),
         "name": "minimal notification",
         "live": false,
-        "push_time": "2017-03-02T09:43:17",
+        "push_time": new Date("2017-03-02T09:43:17"),
         "gcm_collapse_key": "default",
         "targeting": {
             "segments": [
@@ -77,10 +77,10 @@ exports.list = {
             "campaign_token": "3396955c1a7fe0005d76973fca00b44a",
             "from_api": true,
             "dev_only": true,
-            "created_date": "2017-03-02T09:43:17",
+            "created_date": new Date("2017-03-02T09:43:17"),
             "name": "minimal notification",
             "live": false,
-            "push_time": "2017-03-02T09:43:17"
+            "push_time": new Date("2017-03-02T09:43:17")
         }
     ],
     statusCode: 200
