@@ -6,7 +6,10 @@ Every methods in this library in _Promise-based_ using the native object. Moreov
 
 ## Installation
 ``` sh
+# npm
 $ npm install --save batch-notifications
+# yarn
+$ yarn install batch-notifications
 ```
 
 ## Usage
