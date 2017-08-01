@@ -28,10 +28,13 @@ const opts = {
 
 The client will always favor the `liveKey` if present otherwise it will take the `devKey`.
 
-### Campaigns
-See the [available parameters](https://batch.com/doc/api/campaigns/parameters.html) in the batch documentation.
+### API
+The following sections are presenting the API methods.
 
-#### Create
+#### Campaigns
+ See the [available parameters](https://batch.com/doc/api/campaigns/parameters.html) in the batch documentation.
+
+##### [create](https://batch.com/doc/api/campaigns/create.html)
 For example, by taking the [minimal payload example](https://batch.com/doc/api/campaigns/create.html#_post-data), we can create a new campaign like the following:
 ```js
 // see `opts` structure above
@@ -56,7 +59,7 @@ batch.campaign.create(payload)
 });
 ```
 
-#### Update
+##### [update](https://batch.com/doc/api/campaigns/update.html)
 Updating a campaign is somewhat similar as create a new one except that you'll have some [restrictions](https://batch.com/doc/api/campaigns/update.html#_post-data):
 ```js
 const batch = require("batch-notifications")(opts);
@@ -72,7 +75,7 @@ batch.campaign.update(token, payload)
 });
 ```
 
-#### Remove
+##### [remove](https://batch.com/doc/api/campaigns/delete.html)
 Removing a campaign is done like this:
 ```js
 const batch = require("batch-notifications")(opts);
@@ -84,8 +87,8 @@ batch.campaign.remove(token)
 });
 ```
 
-#### Stats
-Fetching stats is quite [easy](https://batch.com/doc/api/campaigns/get.html) but don't forget that stats can **only** be fetched if the campaign token was created using the **live** key and that the campaign is already **launched**:
+##### [stats](https://batch.com/doc/api/campaigns/get.html)
+Stats can **only** be fetched if the campaign token was created using the **live** key and that the campaign is already **launched**:
 ```js
 // see `opts` structure above
 const batch = require("batch-notifications")(opts);
@@ -107,3 +110,81 @@ The `detail` object will contain the following properties:
 - `errors`: Number
 
 See the [docs](https://batch.com/doc/dashboard/push/analytics.html) for more infos about those variables.
+
+##### [get](https://batch.com/doc/api/campaigns/get-campaign.html)
+Retrieve details about one campaign:
+```js
+// see `opts` structure above
+const batch = require("batch-notifications")(opts);
+
+// token was taken from the previous `create` method
+batch.campaign.get(token)
+.then(function (details) {
+    // ...
+});
+```
+
+The `details` object will contain *at least* the following properties:
+- `campaign_token`: String
+- `from_api`: Boolean
+- `dev_only`: Boolean
+- `created_date`: Date
+- `name`: String
+- `live`: Boolean
+- `push_time`: Date
+
+##### [list](https://batch.com/doc/api/campaigns/list.html)
+Get a paginated list of pushed campaigns:
+```js
+// see `opts` structure above
+const batch = require("batch-notifications")(opts);
+
+// by default, it will fetch at most 10 campaigns
+batch.campaign.list()
+.then(function (detailsList) {
+    // ...
+});
+```
+
+The `detailsList` array is composed of objects which contain the same properties as [`get`](#get).
+
+##### has
+To verify that a token is present for a certain app:
+```js
+// see `opts` structure above
+const batch = require("batch-notifications")(opts);
+
+// token was taken from the previous `create` method
+batch.campaign.has(token)
+.then(function (hasToken) {
+    // ...
+});
+```
+
+`hasToken` is a boolean which is `true` only if the token is present for the specific API key.
+
+##### enable
+To ensure that a campaign is enabled:
+```js
+// see `opts` structure above
+const batch = require("batch-notifications")(opts);
+
+// token was taken from the previous `create` method
+batch.campaign.enable(token)
+.then(function () {
+    // campaign is enabled
+});
+```
+
+##### disable
+To ensure that a campaign is disabled:
+```js
+// see `opts` structure above
+const batch = require("batch-notifications")(opts);
+
+// token was taken from the previous `create` method
+batch.campaign.disable(token)
+.then(function () {
+    // campaign is disabled
+});
+```
