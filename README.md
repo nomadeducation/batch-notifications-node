@@ -188,6 +188,33 @@ batch.campaign.disable(token)
 });
 ```
 
+
+#### Transactional
+ See the [available parameters](https://batch.com/doc/api/transactional.html) in the batch documentation.
+
+##### [post](https://batch.com/doc/api/transactional.html)
+For example, by taking the [minimal payload example](https://batch.com/doc/api/transactional.html#_post-data), we can create a new transactional notification like the following:
+```js
+// see `opts` structure above
+const batch = require("batch-notifications")(opts);
+
+const payload = {
+    "group_id": "welcome",
+    "recipients": {
+        "tokens": ["USER_PUSH_TOKEN"]
+    },
+    "message": {
+        "title": "Hello!",
+        "body": "How's it going?"
+    }
+};
+
+batch.transactional.post(payload)
+.then(function (token) {
+    // created transactional referenced by the `token`
+});
+```
+
 ## Contributing
 First, install the dependencies using `yarn`:
 ```sh
