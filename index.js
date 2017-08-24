@@ -1,10 +1,12 @@
 const Config = require("./lib/utils/Config");
 const Campaign = require("./lib/Campaign");
+const Transactional = require("./lib/Transactional");
 
 /**
  * @param {Object} opts contains the user API keys
  * @returns {{
- *     campaign: Campaign
+ *     campaign: Campaign,
+ *     transactional: Transactional
  * }}
  */
 module.exports = function BatchClient (opts) {
@@ -12,6 +14,7 @@ module.exports = function BatchClient (opts) {
     cfg.setUserOptions(opts);
 
     return {
-        campaign: new Campaign(cfg)
+        campaign: new Campaign(cfg),
+        transactional: new Transactional(cfg)
     };
 };
