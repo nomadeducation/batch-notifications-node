@@ -13,7 +13,6 @@ $ yarn install batch-notifications
 ```
 
 ## Usage
-_At the moment, you can **only** handle campaigns !_
 
 ### Options
 Before doing anything, you must pass your API keys created for your app in [batch](https://dashboard.batch.com/):
