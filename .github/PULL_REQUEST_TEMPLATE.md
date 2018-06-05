@@ -1,5 +1,5 @@
 ### Purpose
-_Describe the problem or feature in addition to a link to the issues._
+<!-- Describe the problem or feature in addition to a link to the issues. -->
 
 <!-- uncomment this section if it's relevant !
 ### Learning
