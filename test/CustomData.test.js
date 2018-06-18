@@ -23,7 +23,7 @@ function getURL () {
     return `${cfg.get("api.baseURL")}/${cfg.get("api.version")}/${cfg.get("api.devKey")}`;
 }
 
-describe("Custom Data post specific", function () {
+describe("Custom Data save", function () {
     it("should set custom data to a specific user", function (done) {
         const CustomData = createCustomDataHandler();
         const batchURL = getURL();
@@ -46,7 +46,7 @@ describe("Custom Data post specific", function () {
     });
 });
 
-describe("Custom Data post bulk", function () {
+describe("Custom Data bulk save", function () {
     it("should set custom data to an array of users", function (done) {
         const CustomData = createCustomDataHandler();
         const batchURL = getURL();
@@ -68,7 +68,7 @@ describe("Custom Data post bulk", function () {
     });
 });
 
-describe("Custom Data delete specific", function () {
+describe("Custom Data delete", function () {
     it("should delete custom data of a specific user", function (done) {
         const CustomData = createCustomDataHandler();
         const batchURL = getURL();
@@ -90,7 +90,7 @@ describe("Custom Data delete specific", function () {
     });
 });
 
-describe("Custom Data delete bulk", function () {
+describe("Custom Data bulk delete", function () {
     it("should delete custom data from an array of users", function (done) {
         const CustomData = createCustomDataHandler();
         const batchURL = getURL();
