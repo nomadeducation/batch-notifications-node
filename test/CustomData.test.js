@@ -74,15 +74,14 @@ describe("Custom Data delete specific", function () {
         const batchURL = getURL();
 
         const userId = fixture.postSpecificMinimal.userId;
-        const payload = fixture.postSpecificMinimal.payload;
         const token = fixture.postSpecificMinimal.token;
         const status = fixture.postSpecificMinimal.statusCode;
 
         nock(batchURL)
-        .delete(`/data/users/${userId}`, payload)
+        .delete(`/data/users/${userId}`)
         .reply(status, token);
 
-        CustomData.deleteSpecific(userId, payload)
+        CustomData.deleteSpecific(userId)
         .then(function (result) {
             expect(result).to.be.equal(token.token);
             done();

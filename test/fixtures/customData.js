@@ -33,7 +33,6 @@ exports.postBulkMinimal = {
 
 exports.deleteSpecificMinimal = {
     userId: "2b0d1z5d8f1f3a1d0a7a0124",
-    payload: {},
     token: {
         "token": "d92b571e-c22e-99e5-a506-ae7433c78311"
     },
