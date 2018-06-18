@@ -28,10 +28,10 @@ describe("Custom Data post specific", function () {
         const CustomData = createCustomDataHandler();
         const batchURL = getURL();
 
-        const userId = fixture.postSpecificMinimal.userId;
-        const payload = fixture.postSpecificMinimal.payload;
-        const token = fixture.postSpecificMinimal.token;
-        const status = fixture.postSpecificMinimal.statusCode;
+        const userId = fixture.saveMinimal.userId;
+        const payload = fixture.saveMinimal.payload;
+        const token = fixture.saveMinimal.token;
+        const status = fixture.saveMinimal.statusCode;
 
         nock(batchURL)
         .post(`/data/users/${userId}`, payload)
@@ -51,9 +51,9 @@ describe("Custom Data post bulk", function () {
         const CustomData = createCustomDataHandler();
         const batchURL = getURL();
 
-        const payload = fixture.postBulkMinimal.payload;
-        const token = fixture.postBulkMinimal.token;
-        const status = fixture.postBulkMinimal.statusCode;
+        const payload = fixture.saveBulkMinimal.payload;
+        const token = fixture.saveBulkMinimal.token;
+        const status = fixture.saveBulkMinimal.statusCode;
 
         nock(batchURL)
         .post("/data/users", payload)
@@ -73,9 +73,9 @@ describe("Custom Data delete specific", function () {
         const CustomData = createCustomDataHandler();
         const batchURL = getURL();
 
-        const userId = fixture.postSpecificMinimal.userId;
-        const token = fixture.postSpecificMinimal.token;
-        const status = fixture.postSpecificMinimal.statusCode;
+        const userId = fixture.deleteMinimal.userId;
+        const token = fixture.deleteMinimal.token;
+        const status = fixture.deleteMinimal.statusCode;
 
         nock(batchURL)
         .delete(`/data/users/${userId}`)

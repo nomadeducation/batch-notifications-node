@@ -1,4 +1,4 @@
-exports.postSpecificMinimal = {
+exports.saveMinimal = {
     userId: "2b0d1z5d8f1f3a1d0a7a0124",
     payload: {
         "values":
@@ -12,7 +12,7 @@ exports.postSpecificMinimal = {
     statusCode: 200
 };
 
-exports.postBulkMinimal = {
+exports.saveBulkMinimal = {
     payload: [
         {
             "id": "2b0d1z5d8f1f3a1d0a7a0124",
@@ -31,7 +31,7 @@ exports.postBulkMinimal = {
     statusCode: 200
 };
 
-exports.deleteSpecificMinimal = {
+exports.deleteMinimal = {
     userId: "2b0d1z5d8f1f3a1d0a7a0124",
     token: {
         "token": "d92b571e-c22e-99e5-a506-ae7433c78311"
