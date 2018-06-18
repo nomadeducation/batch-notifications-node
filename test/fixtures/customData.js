@@ -6,7 +6,7 @@ exports.saveMinimal = {
             "u.nickname": "Nick"
         }
     },
-    token: {
+    reply: {
         "token": "d92b578e-c22e-99f5-a506-ae7433c78311"
     },
     statusCode: 200
@@ -25,7 +25,7 @@ exports.saveBulkMinimal = {
             }
         }
     ],
-    token: {
+    reply: {
         "token": "f12b578z-c12e-99e5-a506-ae7433c78311"
     },
     statusCode: 200
@@ -33,7 +33,7 @@ exports.saveBulkMinimal = {
 
 exports.deleteMinimal = {
     userId: "2b0d1z5d8f1f3a1d0a7a0124",
-    token: {
+    reply: {
         "token": "d92b571e-c22e-99e5-a506-ae7433c78311"
     },
     statusCode: 200
@@ -43,7 +43,7 @@ exports.deleteBulkMinimal = {
     payload: [
         "2b0d1c5d8f1f3a1d0a8a0124"
     ],
-    token: {
+    reply: {
         "token": "f94b578e-c22e-99e5-a506-ae7433c78311"
     },
     statusCode: 200

@@ -30,16 +30,16 @@ describe("Custom Data save", function () {
 
         const userId = fixture.saveMinimal.userId;
         const payload = fixture.saveMinimal.payload;
-        const token = fixture.saveMinimal.token;
+        const reply = fixture.saveMinimal.reply;
         const status = fixture.saveMinimal.statusCode;
 
         nock(batchURL)
         .post(`/data/users/${userId}`, payload)
-        .reply(status, token);
+        .reply(status, reply);
 
         CustomData.postSpecific(userId, payload)
         .then(function (result) {
-            expect(result).to.be.equal(token.token);
+            expect(result).to.be.equal(reply.token);
             done();
         })
         .catch((err) => done(err));
@@ -52,16 +52,16 @@ describe("Custom Data bulk save", function () {
         const batchURL = getURL();
 
         const payload = fixture.saveBulkMinimal.payload;
-        const token = fixture.saveBulkMinimal.token;
+        const reply = fixture.saveBulkMinimal.reply;
         const status = fixture.saveBulkMinimal.statusCode;
 
         nock(batchURL)
         .post("/data/users", payload)
-        .reply(status, token);
+        .reply(status, reply);
 
         CustomData.postBulk(payload)
         .then(function (result) {
-            expect(result).to.be.equal(token.token);
+            expect(result).to.be.equal(reply.token);
             done();
         })
         .catch((err) => done(err));
@@ -74,16 +74,16 @@ describe("Custom Data delete", function () {
         const batchURL = getURL();
 
         const userId = fixture.deleteMinimal.userId;
-        const token = fixture.deleteMinimal.token;
+        const reply = fixture.deleteMinimal.reply;
         const status = fixture.deleteMinimal.statusCode;
 
         nock(batchURL)
         .delete(`/data/users/${userId}`)
-        .reply(status, token);
+        .reply(status, reply);
 
         CustomData.deleteSpecific(userId)
         .then(function (result) {
-            expect(result).to.be.equal(token.token);
+            expect(result).to.be.equal(reply.token);
             done();
         })
         .catch((err) => done(err));
@@ -96,16 +96,16 @@ describe("Custom Data bulk delete", function () {
         const batchURL = getURL();
 
         const payload = fixture.deleteBulkMinimal.payload;
-        const token = fixture.deleteBulkMinimal.token;
+        const reply = fixture.deleteBulkMinimal.reply;
         const status = fixture.deleteBulkMinimal.statusCode;
 
         nock(batchURL)
         .delete("/data/users", payload)
-        .reply(status, token);
+        .reply(status, reply);
 
         CustomData.deleteBulk(payload)
         .then(function (result) {
-            expect(result).to.be.equal(token.token);
+            expect(result).to.be.equal(reply.token);
             done();
         })
         .catch((err) => done(err));
