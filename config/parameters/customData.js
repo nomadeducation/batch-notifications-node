@@ -1,4 +1,4 @@
-exports.postSpecificMinimal = {
+exports.saveMinimal = {
     "type": "object",
     "properties": {
         "values": {
@@ -11,7 +11,7 @@ exports.postSpecificMinimal = {
     ]
 };
 
-exports.postBulkMinimal = {
+exports.saveBulkMinimal = {
     "type": "array",
     "items": {
         "type": "object",
