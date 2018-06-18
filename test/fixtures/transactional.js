@@ -9,7 +9,7 @@ exports.postMinimal = {
             "body": "How's it going?"
         }
     },
-    token: {
+    reply: {
         "token": "d95b578d-c12e-43e5-a506-ae7423b78320"
     },
     statusCode: 201
