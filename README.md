@@ -222,7 +222,7 @@ batch.transactional.post(payload)
 
 #### Custom Data
 
-##### [postSpecific](https://batch.com/doc/api/custom-data-api/set-update.html#_post-data)
+##### [save](https://batch.com/doc/api/custom-data-api/set-update.html#_post-data)
 To set custom data to a specific user (you need their id):
 ```js
 // see `opts` structure above
@@ -243,13 +243,13 @@ const payload = {
 };
 
 // userId (String) is the Id of the user to whom you want to set custom data
-batch.customData.postSpecific(userId, payload)
+batch.customData.save(userId, payload)
 .then(function (token) {
     // the `token` represents the transaction
 });
 ```
 
-##### [postBulk](https://batch.com/doc/api/custom-data-api/set-update.html#_bulk-post-data)
+##### [saveBulk](https://batch.com/doc/api/custom-data-api/set-update.html#_bulk-post-data)
 To set custom data to several users:
 ```js
 // see `opts` structure above
@@ -281,13 +281,13 @@ const payload = [
     }
 ];
 
-batch.customData.postBulk(payload)
+batch.customData.saveBulk(payload)
 .then(function (token) {
     // the `token` represents the transaction
 });
 ```
 
-##### [deleteSpecific](https://batch.com/doc/api/custom-data-api/delete.html#_single-delete)
+##### [delete](https://batch.com/doc/api/custom-data-api/delete.html#_single-delete)
 To delete custom data of a specific user (you need their id):
 ```js
 // see `opts` structure above
@@ -295,7 +295,7 @@ const batch = require("batch-notifications")(opts);
 
 // userId (String) is the Id of the user to whom you want to delete custom data
 // this method does not require a payload
-batch.customData.deleteSpecific(userId)
+batch.customData.delete(userId)
 .then(function (token) {
     // the `token` represents the transaction
 });
