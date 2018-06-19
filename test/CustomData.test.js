@@ -37,7 +37,7 @@ describe("Custom Data save", function () {
         .post(`/data/users/${userId}`, payload)
         .reply(status, reply);
 
-        CustomData.postSpecific(userId, payload)
+        CustomData.save(userId, payload)
         .then(function (result) {
             expect(result).to.be.equal(reply.token);
             done();
@@ -59,7 +59,7 @@ describe("Custom Data bulk save", function () {
         .post("/data/users", payload)
         .reply(status, reply);
 
-        CustomData.postBulk(payload)
+        CustomData.saveBulk(payload)
         .then(function (result) {
             expect(result).to.be.equal(reply.token);
             done();
@@ -81,7 +81,7 @@ describe("Custom Data delete", function () {
         .delete(`/data/users/${userId}`)
         .reply(status, reply);
 
-        CustomData.deleteSpecific(userId)
+        CustomData.delete(userId)
         .then(function (result) {
             expect(result).to.be.equal(reply.token);
             done();
