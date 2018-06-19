@@ -29,16 +29,16 @@ describe("Transactional post", function () {
         const batchURL = getURL();
 
         const payload = fixture.postMinimal.payload;
-        const token = fixture.postMinimal.token;
+        const reply = fixture.postMinimal.reply;
         const status = fixture.postMinimal.statusCode;
 
         nock(batchURL)
         .post("/transactional/send", payload)
-        .reply(status, token);
+        .reply(status, reply);
 
         Transactional.post(payload)
         .then(function (result) {
-            expect(result).to.be.equal(token.token);
+            expect(result).to.be.equal(reply.token);
             done();
         })
         .catch((err) => done(err));

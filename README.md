@@ -219,6 +219,106 @@ batch.transactional.post(payload)
 });
 ```
 
+
+#### Custom Data
+
+##### [save](https://batch.com/doc/api/custom-data-api/set-update.html#_post-data)
+To set custom data to a specific user (you need their id):
+```js
+// see `opts` structure above
+const batch = require("batch-notifications")(opts);
+
+const payload = {
+    "overwrite": false,
+    "values":
+    {
+        "u.nickname": "The Rock",
+        "u.force": 42,
+        "ut.hobbies": ["Lifting", "Wrestling", "Acting"],
+        "u.is_subscribed": null,
+        "date(u.last_subscription)": "2016-01-10T10:00:00.000",
+        "date(u.last_purchase)": 1472656161,
+        "ut.locations": { "$add": ["Paris"], "$remove": ["Berlin"] }
+    }
+};
+
+// userId (String) is the Id of the user to whom you want to set custom data
+batch.customData.save(userId, payload)
+.then(function (token) {
+    // the `token` represents the transaction
+});
+```
+
+##### [saveBulk](https://batch.com/doc/api/custom-data-api/set-update.html#_bulk-post-data)
+To set custom data to several users:
+```js
+// see `opts` structure above
+const batch = require("batch-notifications")(opts);
+
+const payload = [
+    {
+        "id": "Vincent",
+        "update":
+        {
+            "values":
+            {
+                "u.nickname": "Vincent",
+                "u.age": 55
+            }
+        }
+    },
+    {
+        "id": "Johnny",
+        "update":
+        {
+            "overwrite": true,
+            "values":
+            {
+                "u.nickname": "BeGood",
+                "u.age": 30
+            }
+        }
+    }
+];
+
+batch.customData.saveBulk(payload)
+.then(function (token) {
+    // the `token` represents the transaction
+});
+```
+
+##### [delete](https://batch.com/doc/api/custom-data-api/delete.html#_single-delete)
+To delete custom data of a specific user (you need their id):
+```js
+// see `opts` structure above
+const batch = require("batch-notifications")(opts);
+
+// userId (String) is the Id of the user to whom you want to delete custom data
+// this method does not require a payload
+batch.customData.delete(userId)
+.then(function (token) {
+    // the `token` represents the transaction
+});
+```
+
+##### [deleteBulk](https://batch.com/doc/api/custom-data-api/delete.html#_bulk-deletes)
+To delete custom data of an array of users:
+```js
+// see `opts` structure above
+const batch = require("batch-notifications")(opts);
+
+const payload = [
+    "user1",
+    "user2",
+    "user3"
+];
+
+batch.customData.deleteBulk(payload)
+.then(function (token) {
+    // the `token` represents the transaction
+});
+```
+
 ## Contributing
 First, install the dependencies using `yarn`:
 ```sh
