@@ -38,7 +38,7 @@ before](http://sd.jtimothyking.com/2006/07/11/twelve-benefits-of-writing-unit-te
 ## Styleguides
 
 ### Git commit messages
-- Use the [angular](https://github.com/angular/angular.js/blob/master/CONTRIBUTING.md#commit) commit style
+- Use the [angular](https://github.com/angular/angular.js/blob/master/DEVELOPERS.md#commits) commit style
 - commit prefixes explanation:
   - `chore`: everything related to maintenance around the code (gulp, travis, fixtures, etc)
   - `docs`: related to documentation (README, code comments, etc)

@@ -6,7 +6,7 @@
 This project is a NodeJS client wrapper for the [Batch.com](https://batch.com/) notifications server API.
 
 ## Prerequisites
-Every methods in this library in _Promise-based_ using the native object. Moreover, since we're using some of the ES2015+ operators (i.e. `const`, arrow functions, etc), you'll need the latest LTS version of `node` which is the v6 at the moment of writing.
+Every methods in this library in _Promise-based_ using the native object. Moreover, since we're using some of the ES2015+ operators (i.e. `const`, arrow functions, etc), you'll need at least `node 6`.
 
 ## Installation
 ``` sh
