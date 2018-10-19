@@ -31,9 +31,9 @@
   "homepage": "https://github.com/nomadeducation/batch-notifications-node#readme",
   "dependencies": {
     "ajv": "^5.0.1",
-    "axios": "^0.16.1",
+    "axios": "^0.16.2",
     "bunyan": "^1.8.10",
-    "lodash": "^4.17.4"
+    "lodash": "^4.17.5"
   },
   "devDependencies": {
     "chai": "^3.5.0",
