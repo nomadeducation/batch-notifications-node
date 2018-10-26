@@ -1,5 +1,5 @@
 const expect = require("chai").expect;
-const nock = require("nock");
+const mock = require("./requestMock");
 const Config = require("../lib/utils/Config");
 const Transactional = require("../lib/Transactional");
 const fixture = require("./fixtures/transactional");
@@ -32,8 +32,7 @@ describe("Transactional post", function () {
         const reply = fixture.postMinimal.reply;
         const status = fixture.postMinimal.statusCode;
 
-        nock(batchURL)
-        .post("/transactional/send", payload)
+        mock.onPost(`${batchURL}/transactional/send`, payload)
         .reply(status, reply);
 
         Transactional.post(payload)

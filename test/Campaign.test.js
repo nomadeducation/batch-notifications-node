@@ -1,5 +1,6 @@
 const expect = require("chai").expect;
-const nock = require("nock");
+const mock = require("./requestMock");
+const querystring = require("querystring");
 const Config = require("../lib/utils/Config");
 const Campaign = require("../lib/Campaign");
 const fixture = require("./fixtures/campaign");
@@ -37,8 +38,7 @@ describe("Campaign creation", function () {
         const token = fixture.createMinimal.token;
         const status = fixture.createMinimal.statusCode;
 
-        nock(batchURL)
-        .post("/campaigns/create", payload)
+        mock.onPost(`${batchURL}/campaigns/create`, payload)
         .reply(status, token);
 
         campaign.create(payload)
@@ -60,8 +60,7 @@ describe("Campaign deletion", function () {
         const token = fixture.createMinimal.token;
         const status = fixture.createMinimal.statusCode;
 
-        nock(batchURL)
-        .post("/campaigns/create", payload)
+        mock.onPost(`${batchURL}/campaigns/create`, payload)
         .reply(status, token);
 
         campaign.create(payload)
@@ -75,8 +74,7 @@ describe("Campaign deletion", function () {
     it("should remove an existing campaign", function (done) {
         const status = fixture.createMinimal.statusCode;
 
-        nock(batchURL)
-        .post(`/campaigns/delete/${createdCampaignToken}`)
+        mock.onPost(`${batchURL}/campaigns/delete/${createdCampaignToken}`)
         .reply(status);
 
         campaign.remove(createdCampaignToken)
@@ -95,8 +93,7 @@ describe("Campaign", function () {
         const token = fixture.createMinimal.token;
         const status = fixture.createMinimal.statusCode;
 
-        nock(batchURL)
-        .post("/campaigns/create", payload)
+        mock.onPost(`${batchURL}/campaigns/create`, payload)
         .reply(status, token);
 
         campaign.create(payload)
@@ -110,8 +107,7 @@ describe("Campaign", function () {
     afterEach(function (done) {
         const status = fixture.createMinimal.statusCode;
 
-        nock(batchURL)
-        .post(`/campaigns/delete/${createdCampaignToken}`)
+        mock.onPost(`${batchURL}/campaigns/delete/${createdCampaignToken}`)
         .reply(status);
 
         campaign.remove(createdCampaignToken)
@@ -123,8 +119,7 @@ describe("Campaign", function () {
         const reply = fixture.get.reply;
         const status = fixture.get.statusCode;
 
-        nock(batchURL)
-        .get(`/campaigns/${createdCampaignToken}`)
+        mock.onGet(`${batchURL}/campaigns/${createdCampaignToken}`)
         .reply(status, reply);
 
         campaign.get(createdCampaignToken)
@@ -139,12 +134,11 @@ describe("Campaign", function () {
         const reply = fixture.list.reply;
         const status = fixture.list.statusCode;
 
-        nock(batchURL)
-        .get("/campaigns/list")
-        .query({
+        const queryString = querystring.stringify({
             from: 0,
             limit: 10
-        })
+        });
+        mock.onGet(`${batchURL}/campaigns/list?${queryString}`)
         .reply(status, reply);
 
         campaign.list()
@@ -156,11 +150,11 @@ describe("Campaign", function () {
     });
 
     it("should check that the existing campaign exists", function (done) {
+        const reply = fixture.get.reply;
         const status = fixture.get.statusCode;
 
-        nock(batchURL)
-        .get(`/campaigns/${createdCampaignToken}`)
-        .reply(status);
+        mock.onGet(`${batchURL}/campaigns/${createdCampaignToken}`)
+        .reply(status, reply);
 
         campaign.has(createdCampaignToken)
         .then(function (isCreated) {
@@ -175,12 +169,10 @@ describe("Campaign", function () {
         const status = fixture.createMinimal.statusCode;
         const reply = fixture.get.reply;
 
-        nock(batchURL)
-        .post(`/campaigns/update/${createdCampaignToken}`, payload)
+        mock.onPost(`${batchURL}/campaigns/update/${createdCampaignToken}`, payload)
         .reply(status);
 
-        nock(batchURL)
-        .get(`/campaigns/${createdCampaignToken}`)
+        mock.onGet(`${batchURL}/campaigns/${createdCampaignToken}`)
         .reply(status, reply);
 
         campaign.update(createdCampaignToken, payload)
@@ -196,12 +188,10 @@ describe("Campaign", function () {
         const reply = fixture.get.reply;
         const status = fixture.createMinimal.statusCode;
 
-        nock(batchURL)
-        .post(`/campaigns/update/${createdCampaignToken}`, {live: true})
+        mock.onPost(`${batchURL}/campaigns/update/${createdCampaignToken}`, {live: true})
         .reply(status);
 
-        nock(batchURL)
-        .get(`/campaigns/${createdCampaignToken}`)
+        mock.onGet(`${batchURL}/campaigns/${createdCampaignToken}`)
         .reply(status, reply);
 
         campaign.enable(createdCampaignToken)
@@ -217,12 +207,10 @@ describe("Campaign", function () {
         const reply = fixture.get.reply;
         const status = fixture.createMinimal.statusCode;
 
-        nock(batchURL)
-        .post(`/campaigns/update/${createdCampaignToken}`, {live: false})
+        mock.onPost(`${batchURL}/campaigns/update/${createdCampaignToken}`, {live: false})
         .reply(status);
 
-        nock(batchURL)
-        .get(`/campaigns/${createdCampaignToken}`)
+        mock.onGet(`${batchURL}/campaigns/${createdCampaignToken}`)
         .reply(status, reply);
 
         campaign.disable(createdCampaignToken)
@@ -241,8 +229,7 @@ describe("Campaign", function () {
         const expectedStats = fixture.createMinimal.stats;
         const status = fixture.createMinimal.statusCode;
 
-        nock(batchURL)
-        .get(`/campaigns/stats/${createdCampaignToken}`)
+        mock.onGet(`${batchURL}/campaigns/stats/${createdCampaignToken}`)
         .reply(status, replyStats);
 
         campaign.stats(createdCampaignToken)

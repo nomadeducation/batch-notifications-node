@@ -1,5 +1,5 @@
 const expect = require("chai").expect;
-const nock = require("nock");
+const mock = require("./requestMock");
 const Config = require("../lib/utils/Config");
 const CustomData = require("../lib/CustomData");
 const fixture = require("./fixtures/customData");
@@ -33,8 +33,7 @@ describe("Custom Data save", function () {
         const reply = fixture.saveMinimal.reply;
         const status = fixture.saveMinimal.statusCode;
 
-        nock(batchURL)
-        .post(`/data/users/${userId}`, payload)
+        mock.onPost(`${batchURL}/data/users/${userId}`, payload)
         .reply(status, reply);
 
         CustomData.save(userId, payload)
@@ -55,8 +54,7 @@ describe("Custom Data bulk save", function () {
         const reply = fixture.saveBulkMinimal.reply;
         const status = fixture.saveBulkMinimal.statusCode;
 
-        nock(batchURL)
-        .post("/data/users", payload)
+        mock.onPost(`${batchURL}/data/users`, payload)
         .reply(status, reply);
 
         CustomData.saveBulk(payload)
@@ -77,8 +75,7 @@ describe("Custom Data delete", function () {
         const reply = fixture.deleteMinimal.reply;
         const status = fixture.deleteMinimal.statusCode;
 
-        nock(batchURL)
-        .delete(`/data/users/${userId}`)
+        mock.onDelete(`${batchURL}/data/users/${userId}`)
         .reply(status, reply);
 
         CustomData.delete(userId)
@@ -99,8 +96,7 @@ describe("Custom Data bulk delete", function () {
         const reply = fixture.deleteBulkMinimal.reply;
         const status = fixture.deleteBulkMinimal.statusCode;
 
-        nock(batchURL)
-        .delete("/data/users", payload)
+        mock.onDelete(`${batchURL}/data/users`, payload)
         .reply(status, reply);
 
         CustomData.deleteBulk(payload)
