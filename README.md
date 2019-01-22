@@ -25,7 +25,10 @@ const opts = {
     restKey: "YOUR_REST_API_KEY",
     // you must pass at least one the following API key
     devKey: "YOUR_DEV_API_KEY",
-    liveKey: "YOUR_LIVE_API_KEY"
+    liveKey: "YOUR_LIVE_API_KEY",
+    // optional
+    // by default a bunyan instance will be created
+    logger: new MyCustomLogger()
 };
 ```
 

@@ -9,6 +9,9 @@ module.exports = {
         },
         "liveKey": {
             "type": "string"
+        },
+        "logger": {
+            "type": "object"
         }
     },
     "required": ["restKey"],
