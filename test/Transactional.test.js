@@ -9,9 +9,7 @@ const options = require("./fixtures/options");
  * @returns {Transactional}
  */
 function createTransactionalHandler () {
-    const cfg = new Config();
-    cfg.setUserOptions(options);
-    return new Transactional(cfg);
+    return new Transactional(options);
 }
 
 /**

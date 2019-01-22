@@ -10,9 +10,7 @@ const options = require("./fixtures/options");
  * @returns {Campaign}
  */
 function createCampaignHandler () {
-    const cfg = new Config();
-    cfg.setUserOptions(options);
-    return new Campaign(cfg);
+    return new Campaign(options);
 }
 
 /**

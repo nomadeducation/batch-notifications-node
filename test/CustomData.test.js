@@ -9,9 +9,7 @@ const options = require("./fixtures/options");
  * @returns {CustomData}
  */
 function createCustomDataHandler () {
-    const cfg = new Config();
-    cfg.setUserOptions(options);
-    return new CustomData(cfg);
+    return new CustomData(options);
 }
 
 /**

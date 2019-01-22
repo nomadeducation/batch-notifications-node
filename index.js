@@ -1,4 +1,3 @@
-const Config = require("./lib/utils/Config");
 const Campaign = require("./lib/Campaign");
 const Transactional = require("./lib/Transactional");
 const CustomData = require("./lib/CustomData.js");
@@ -12,12 +11,9 @@ const CustomData = require("./lib/CustomData.js");
  * }}
  */
 module.exports = function BatchClient (opts) {
-    const cfg = new Config();
-    cfg.setUserOptions(opts);
-
     return {
-        campaign: new Campaign(cfg),
-        transactional: new Transactional(cfg),
-        customData: new CustomData(cfg)
+        campaign: new Campaign(opts),
+        transactional: new Transactional(opts),
+        customData: new CustomData(opts)
     };
 };
